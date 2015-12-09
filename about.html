@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>RadicalPhoto About</title>
-	<link href='http://fonts.googleapis.com/css?family=Gruppo' rel='stylesheet'>
+	<meta charset="UTF-8">
+	<title>Radical Photo About</title>
+	<link href="http://fonts.googleapis.com/css?family=Gruppo" rel="stylesheet">
 	<link type="text/css" rel="stylesheet" href="css/radicalphoto.css">
 </head>
 <body>
-
 <div id="header">
 	<ul>
 		<li><a href="index.html">Home</a></li>
@@ -14,37 +14,37 @@
 		<li><a href="about.html">About</a></li>
 		<li><a href="contact.html">Contact</a>
 	</ul>
-
-	<h1>RadicalPhoto</h1>
-
+	<h1>Radical Photo</h1>
 </div>
-
 <div id="main_wrapper">
-
 	<div id="content">
-	<h2>About RadicalPhoto</h2>
-
+	<h2>About Radical Photo</h2>
 	<p>Today is <span>July 17, 2015</span>. Stay tuned, we have exciting news about our company coming in a few more weeks!</p>
-
 	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-
 	<h3>Our Team</h3>
-
-	<p id="bios">
-		<a href="sheila.html">Sheila</a> (President) | 
-		<a href="frank.html">Frank</a> (Vice President) | 
-		<a href="joanne.html">Joanne</a> (Senior Photographer)
-	</p> 
-
-	<div id="bio"></div>
-
-	</div>
-
+		<p id="bios">
+			<a href="sheila.html" id="sheila">Sheila</a> (President) | 
+			<a href="frank.html" id="frank">Frank</a> (Vice President) | 
+			<a href="joanne.html" id="joanne">Joanne</a> (Senior Photographer)
+		</p> 
+		<div id="bio_load"></div>
+	</div> <!-- /content -->
 	<div id="footer">
 	<p>All content &copy; Copyright</p>
 	</div>
-
 </div>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script>
+	//Bio load
+	$(document).ready(function(){
+		$("#bios a").click(function (e) {
+			e.preventDefault();
+	        var link_url = $(this).attr("href");
+	        $("#bio_load").load(link_url + " #content", function () 
+	        	{$("#bio_load").hide().fadeIn(800);
+	        	});
+	 	});
+	});
+	</script>
 </body>
 </html>

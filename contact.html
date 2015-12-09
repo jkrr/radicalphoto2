@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>RadicalPhoto Contact</title>
-	<link href='http://fonts.googleapis.com/css?family=Gruppo' rel='stylesheet' type='text/css'>
+	<meta charset="UTF-8">
+	<title>Radical Photo Contact</title>
+	<link href="http://fonts.googleapis.com/css?family=Gruppo" rel="stylesheet">
 	<link type="text/css" rel="stylesheet" href="css/radicalphoto.css">
 </head>
 <body>
-
 <div id="header">
 	<ul>
 		<li><a href="index.html">Home</a></li>
@@ -14,35 +14,74 @@
 		<li><a href="about.html">About</a></li>
 		<li><a href="contact.html">Contact</a>
 	</ul>
-
-	<h1>RadicalPhoto</h1>
-
+	<h1>Radical Photo</h1>
 </div>
-
 <div id="main_wrapper">
-
 	<div id="content">
-	<h2>Contact RadicalPhoto</h2>
-
-	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-
+		<h2>Contact RadicalPhoto</h2>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
 	<form action="http://derekallard.com/echo.php" method="post" id="myform">
-
-		<p class="errors">All fields are required.</p>
-
-		<p><label>Name: <input type="text" size="25" name="name" id="username"></label></p>
-		<p><label>Email: <input type="text" size="25" name="email" id="email"></label></p>
-		<p><label>Message:<br> <textarea cols="50" rows="5" name="message" id="my_message"></textarea></label></p>
+		<p><label>Name: <input class="actform" type="text" size="25" name="name" id="username"></label>
+			<span id="iferrors1" class="errors">All fields are required.</span></p>
+		<p><label>Email: <input class="actform" type="text" size="25" name="email" id="email"></label>
+			<span id="iferrors2" class="errors">All fields are required.</span></p>
+		<p><label>Message:<br> <textarea class="actform" cols="50" rows="5" name="message" id="my_message"></textarea></label>
+			<span id="iferrors3" class="errors">All fields are required.</span></p>
 		<p><input type="submit" value="Contact Us"></p>
 	</form>
-
 	</div>
-
 	<div id="footer">
-	<p>All content &copy; Copyright</p>
+		<p>All content &copy; Copyright</p>
 	</div>
-
 </div>
-
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script>
+	$(document).ready(function() {
+			//The Form
+			var user_form = $("#myform");
+			//Inputs
+			var user_name = $("#username"); //username input
+	    	var user_email = $("#email"); //email input
+	   	 	var user_message = $("#my_message"); //message input
+			//Errors
+	   	 	var iferrors1 = $("#iferrors1"); 
+	    	var iferrors2 = $("#iferrors2");
+	    	var iferrors3 = $("#iferrors3");
+	    	//Form Validation
+			user_form.submit(function(event) {
+			var sbm_errors = 0;
+			var name_value = user_name.val();
+			var email_value = user_email.val();
+	        var message_value = user_message.val();
+			if (name_value == "") {
+				user_name.css({"border": "2px solid red"});
+				iferrors1.css({"display": "inline-block"})
+				sbm_errors ++;
+			} else {
+				user_name.css({"border": "2px solid green"});
+				iferrors1.css({"display": "none"})
+			}
+			if (email_value == "") {
+				user_email.css({"border": "2px solid red"});
+				iferrors2.css({"display": "inline-block"})
+				sbm_errors ++;
+			} else {
+				user_email.css({"border": "2px solid green"});
+				iferrors2.css({"display": "none"})
+			}
+			if (message_value == "") {
+				user_message.css({"border": "2px solid red"});
+				iferrors3.css({"display": "inline-block"})
+				sbm_errors ++;
+			} else {
+				user_message.css({"border": "2px solid green"});
+				iferrors3.css({"display": "none"})
+			}
+			if (sbm_errors > 0) {
+	               return false; 
+	        };
+		});
+	});
+	</script>
 </body>
 </html>
